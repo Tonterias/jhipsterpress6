@@ -1,0 +1,32 @@
+{
+    "name": "Blockeduser",
+    "fields": [
+        {
+            "fieldName": "creationDate",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "blockinguser",
+            "otherEntityName": "community",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "blockeduser",
+            "otherEntityName": "community",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180803091133",
+    "entityTableName": "blockeduser",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

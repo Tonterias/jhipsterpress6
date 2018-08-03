@@ -1,0 +1,10 @@
+{
+    "jhipsterPress06App": {
+        "Gender" : {
+            "null": "",
+            "MALE": "MALE",
+            "FEMALE": "FEMALE",
+            "OTHER": "OTHER"
+        }
+    }
+}
