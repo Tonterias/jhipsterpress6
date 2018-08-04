@@ -2,40 +2,46 @@
     <div class="col-8">
         <div *ngIf="post">
         
-<h3>Comments</h3>
-<div *ngFor="let comment of post.comments">
-    <p>{{comment.creationDate | date}}</p>      
-    <p>{{comment.commentText}}</p>    
-</div>
-<h3>Posts</h3>
-<div *ngFor="let tag of post.tags">      
-    <p>{{tag.tagName}}</p>    
-</div>       
-<h3>Profile</h3>     
-    <p>{{post.profile.id}}</p>
-    <p>{{post.profile.creationDate}}</p>
-    <p>{{post.profile.gender}}</p>
-    <p>{{post.profile.phone}}</p>
-    <p>{{post.profile.bio}}</p>
-    <p>{{post.profile.birthdate}}</p>
-    <p>{{post.profile.civilStatus}}</p>
-    <p>{{post.profile.lookingFor}}</p>
-    <p>{{post.profile.purpose}}</p>
-    <p>{{post.profile.physical}}</p>
-    <p>{{post.profile.religion}}</p>
-    <p>{{post.profile.ethnicGroup}}</p>
-    <p>{{post.profile.studies}}</p>
-    <p>{{post.profile.sibblings}}</p>
-    <p>{{post.profile.eyes}}</p>
-    <p>{{post.profile.children}}</p>
-    <p>{{post.profile.futureChildren}}</p>
-    <p>{{post.profile.pet}}</p>
-    <p>{{post.profile.user.id}}</p>
-    <p>{{post.profile.user.login}}</p>
-    <p>{{post.profile.user.firstName}}</p>
-    <p>{{post.profile.user.lastName}}</p>
-    <p>{{post.profile.user.email}}</p>
-    <p>{{post.profile.user.activated}}</p>
+			<h3>Comments</h3>
+			<div *ngFor="let comment of post.comments">
+			    <p>comment.creationDate: {{comment.creationDate | date}}</p>      
+			    <p>comment.commentText: {{comment.commentText}}</p>    
+			</div>
+			<h3>Posts</h3>
+			<div *ngFor="let tag of post.tags">      
+			    <p>tag.tagName: {{tag.tagName}}</p>    
+			</div>       
+			<h3>Profile</h3>
+			    <div *ngIf="post.profile.image">
+                        <a (click)="openFile(post.profile.imageContentType, post.profile.image)">
+                            <img [src]="'data:' + post.profile.imageContentType + ';base64,' + post.profile.image" style="max-width: 100%;" alt="post.profile image"/>
+                        </a>
+                        {{profile.imageContentType}}, {{byteSize(post.profile.image)}}
+                </div>  
+			    <p>post.profile.id: {{post.profile.id}}</p>
+			    <p>post.profile.creationDate: {{post.profile.creationDate}}</p>
+			    <p>post.profile.gender: {{post.profile.gender}}</p>
+			    <p>post.profile.phone: {{post.profile.phone}}</p>
+			    <p>post.profile.bio: {{post.profile.bio}}</p>
+			    <p>post.profile.birthdate: {{post.profile.birthdate}}</p>
+			    <p>post.profile.civilStatus: {{post.profile.civilStatus}}</p>
+			    <p>post.profile.lookingFor: {{post.profile.lookingFor}}</p>
+			    <p>post.profile.purpose: {{post.profile.purpose}}</p>
+			    <p>post.profile.physical: {{post.profile.physical}}</p>
+			    <p>post.profile.religion: {{post.profile.religion}}</p>
+			    <p>post.profile.ethnicGroup: {{post.profile.ethnicGroup}}</p>
+			    <p>post.profile.studies: {{post.profile.studies}}</p>
+			    <p>post.profile.sibblings: {{post.profile.sibblings}}</p>
+			    <p>post.profile.eyes: {{post.profile.eyes}}</p>
+			    <p>post.profile.children: {{post.profile.children}}</p>
+			    <p>post.profile.futureChildren: {{post.profile.futureChildren}}</p>
+			    <p>post.profile.pet: {{post.profile.pet}}</p>
+			    <p>post.profile.user.id: {{post.profile.user.id}}</p>
+			    <p>post.profile.user.login: {{post.profile.user.login}}</p>
+			    <p>post.profile.user.firstName: {{post.profile.user.firstName}}</p>
+			    <p>post.profile.user.lastName: {{post.profile.user.lastName}}</p>
+			    <p>post.profile.user.email: {{post.profile.user.email}}</p>
+			    <p>post.profile.user.activated: {{post.profile.user.activated}}</p>
    
     
     <!-- News Content -->

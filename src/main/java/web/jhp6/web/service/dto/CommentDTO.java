@@ -24,6 +24,7 @@ public class CommentDTO implements Serializable {
     private Long postId;
 
     private Long profileId;
+    
 
     public Long getId() {
         return id;
@@ -73,36 +74,66 @@ public class CommentDTO implements Serializable {
         this.profileId = profileId;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((commentText == null) ? 0 : commentText.hashCode());
+		result = prime * result + ((creationDate == null) ? 0 : creationDate.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((isOffensive == null) ? 0 : isOffensive.hashCode());
+		result = prime * result + ((postId == null) ? 0 : postId.hashCode());
+		result = prime * result + ((profileId == null) ? 0 : profileId.hashCode());
+		return result;
+	}
 
-        CommentDTO commentDTO = (CommentDTO) o;
-        if (commentDTO.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), commentDTO.getId());
-    }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CommentDTO other = (CommentDTO) obj;
+		if (commentText == null) {
+			if (other.commentText != null)
+				return false;
+		} else if (!commentText.equals(other.commentText))
+			return false;
+		if (creationDate == null) {
+			if (other.creationDate != null)
+				return false;
+		} else if (!creationDate.equals(other.creationDate))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (isOffensive == null) {
+			if (other.isOffensive != null)
+				return false;
+		} else if (!isOffensive.equals(other.isOffensive))
+			return false;
+		if (postId == null) {
+			if (other.postId != null)
+				return false;
+		} else if (!postId.equals(other.postId))
+			return false;
+		if (profileId == null) {
+			if (other.profileId != null)
+				return false;
+		} else if (!profileId.equals(other.profileId))
+			return false;
+		return true;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(getId());
-    }
+	@Override
+	public String toString() {
+		return "CommentDTO [id=" + id + ", creationDate=" + creationDate + ", commentText=" + commentText
+				+ ", isOffensive=" + isOffensive + ", postId=" + postId + ", profileId=" + profileId + "]";
+	}
 
-    @Override
-    public String toString() {
-        return "CommentDTO{" +
-            "id=" + getId() +
-            ", creationDate='" + getCreationDate() + "'" +
-            ", commentText='" + getCommentText() + "'" +
-            ", isOffensive='" + isIsOffensive() + "'" +
-            ", post=" + getPostId() +
-            ", profile=" + getProfileId() +
-            "}";
-    }
+	
 }
