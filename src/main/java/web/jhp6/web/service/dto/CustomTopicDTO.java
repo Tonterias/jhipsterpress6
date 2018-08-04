@@ -6,15 +6,15 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
- * A DTO for the Tag entity.
+ * A DTO for the Topic entity.
  */
-public class CustomTagDTO implements Serializable {
+public class CustomTopicDTO implements Serializable {
 
     private Long id;
 
     @NotNull
     @Size(min = 2, max = 40)
-    private String tagName;
+    private String topicName;
 
     public Long getId() {
         return id;
@@ -24,12 +24,12 @@ public class CustomTagDTO implements Serializable {
         this.id = id;
     }
 
-    public String getTagName() {
-        return tagName;
+    public String getTopicName() {
+        return topicName;
     }
 
-    public void setTagName(String tagName) {
-        this.tagName = tagName;
+    public void setTopicName(String topicName) {
+        this.topicName = topicName;
     }
 
 	@Override
@@ -37,7 +37,7 @@ public class CustomTagDTO implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((tagName == null) ? 0 : tagName.hashCode());
+		result = prime * result + ((topicName == null) ? 0 : topicName.hashCode());
 		return result;
 	}
 
@@ -49,22 +49,22 @@ public class CustomTagDTO implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		CustomTagDTO other = (CustomTagDTO) obj;
+		CustomTopicDTO other = (CustomTopicDTO) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (tagName == null) {
-			if (other.tagName != null)
+		if (topicName == null) {
+			if (other.topicName != null)
 				return false;
-		} else if (!tagName.equals(other.tagName))
+		} else if (!topicName.equals(other.topicName))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "CustomTagDTO [id=" + id + ", tagName=" + tagName + "]";
+		return "CustomTopicDTO [id=" + id + ", topicName=" + topicName + "]";
 	}
 }

@@ -8,9 +8,14 @@
 			    <p>comment.commentText: {{comment.commentText}}</p>    
 			</div>
 			
-			<h3>Posts</h3>
+			<h3>Tags</h3>
 			<div *ngFor="let tag of post.tags">      
 			    <p>tag.tagName: {{tag.tagName}}</p>    
+			</div>
+			
+			<h3>Topics</h3>
+			<div *ngFor="let topic of post.topics">      
+			    <p>topic.topicName: {{topic.topicName}}</p>    
 			</div>
 			
 			<h3>URLlink</h3>
