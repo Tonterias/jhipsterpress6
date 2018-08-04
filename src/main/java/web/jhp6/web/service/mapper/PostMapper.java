@@ -8,10 +8,11 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity Post and its DTO PostDTO.
  */
-@Mapper(componentModel = "spring", uses = {UrllinkMapper.class, BlogMapper.class, ProfileMapper.class, CustomTagMapper.class, CommentMapper.class})
+@Mapper(componentModel = "spring", uses = {UrllinkMapper.class, BlogMapper.class, 
+		ProfileMapper.class, CustomTagMapper.class, CommentMapper.class, UrllinkMapper.class})
 public interface PostMapper extends EntityMapper<PostDTO, Post> {
 
-    @Mapping(source = "urllink.id", target = "urllinkId")
+//    @Mapping(source = "urllink.id", target = "urllinkId")
 //    @Mapping(source = "urllink.linkText", target = "urllinkText")
 //    @Mapping(source = "urllink.linkURL", target = "urllinkURL")
     @Mapping(source = "blog.id", target = "blogId")
@@ -19,10 +20,11 @@ public interface PostMapper extends EntityMapper<PostDTO, Post> {
 //    @Mapping(source = "profile.id", target = "profileId")
     PostDTO toDto(Post post);
 
-    @Mapping(source = "urllinkId", target = "urllink")
+//    @Mapping(source = "urllinkId", target = "urllink")
 //    @Mapping(source = "urllinkText", target = "urllink.linkText")
 //    @Mapping(source = "urllinkURL", target = "urllink.linkURL")
     @Mapping(target = "comments", ignore = true)
+    @Mapping(target = "urllink", ignore = true)
     @Mapping(source = "blogId", target = "blog")
 //    @Mapping(source = "profileId", target = "profile")
     @Mapping(target = "profile", ignore = true)

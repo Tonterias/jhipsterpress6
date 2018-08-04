@@ -7,16 +7,23 @@
 			    <p>comment.creationDate: {{comment.creationDate | date}}</p>      
 			    <p>comment.commentText: {{comment.commentText}}</p>    
 			</div>
+			
 			<h3>Posts</h3>
 			<div *ngFor="let tag of post.tags">      
 			    <p>tag.tagName: {{tag.tagName}}</p>    
-			</div>       
+			</div>
+			
+			<h3>URLlink</h3>
+				<p>post.urllink.id: {{post.urllink.id}}</p>
+			    <p>post.urllink.linkText: {{post.urllink.linkText}}</p>
+			    <p>post.urllink.linkURL: {{post.urllink.linkURL}}</p>
+			       
 			<h3>Profile</h3>
 			    <div *ngIf="post.profile.image">
                         <a (click)="openFile(post.profile.imageContentType, post.profile.image)">
                             <img [src]="'data:' + post.profile.imageContentType + ';base64,' + post.profile.image" style="max-width: 100%;" alt="post.profile image"/>
                         </a>
-                        {{profile.imageContentType}}, {{byteSize(post.profile.image)}}
+                        {{post.profile.imageContentType}}, {{byteSize(post.profile.image)}}
                 </div>  
 			    <p>post.profile.id: {{post.profile.id}}</p>
 			    <p>post.profile.creationDate: {{post.profile.creationDate}}</p>
