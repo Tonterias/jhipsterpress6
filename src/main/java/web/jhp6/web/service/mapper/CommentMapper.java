@@ -12,15 +12,16 @@ import org.mapstruct.*;
 public interface CommentMapper extends EntityMapper<CommentDTO, Comment> {
 
     @Mapping(source = "post.id", target = "postId")
-    @Mapping(source = "profile.id", target = "profileId")
+//    @Mapping(source = "profile.id", target = "profileId")
 //    @Mapping(source = "user.firstName", target = "firstName")
 //    @Mapping(source = "user.lastName", target = "lastName")
     CommentDTO toDto(Comment comment);
 
     @Mapping(source = "postId", target = "post")
-    @Mapping(source = "profileId", target = "profile")
+//    @Mapping(source = "profileId", target = "profile")
 //    @Mapping(source = "firstName", target = "user")
 //    @Mapping(source = "lastName", target = "user.lastName")
+    @Mapping(target = "profile", ignore = true)
     Comment toEntity(CommentDTO commentDTO);
 
     default Comment fromId(Long id) {

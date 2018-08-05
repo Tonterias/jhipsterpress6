@@ -3,6 +3,7 @@ package web.jhp6.web.service.dto;
 import java.time.Instant;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Objects;
 import javax.persistence.Lob;
 import web.jhp6.web.domain.enumeration.Gender;
@@ -15,6 +16,8 @@ import web.jhp6.web.domain.enumeration.EthnicGroup;
 import web.jhp6.web.domain.enumeration.Studies;
 import web.jhp6.web.domain.enumeration.Eyes;
 import web.jhp6.web.domain.enumeration.Smoker;
+import web.jhp6.web.domain.Profile;
+import web.jhp6.web.domain.User;
 import web.jhp6.web.domain.enumeration.Children;
 import web.jhp6.web.domain.enumeration.FutureChildren;
 
@@ -72,7 +75,8 @@ public class ProfileDTO implements Serializable {
 
     private Boolean pet;
 
-    private Long userId;
+    private User user;
+//    private Long userId;
 
     public Long getId() {
         return id;
@@ -242,59 +246,190 @@ public class ProfileDTO implements Serializable {
         this.pet = pet;
     }
 
-    public Long getUserId() {
-        return userId;
-    }
+	public User getUser() {
+		return user;
+	}
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
+	public void setUser(User user) {
+		this.user = user;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((bio == null) ? 0 : bio.hashCode());
+		result = prime * result + ((birthdate == null) ? 0 : birthdate.hashCode());
+		result = prime * result + ((children == null) ? 0 : children.hashCode());
+		result = prime * result + ((civilStatus == null) ? 0 : civilStatus.hashCode());
+		result = prime * result + ((creationDate == null) ? 0 : creationDate.hashCode());
+		result = prime * result + ((ethnicGroup == null) ? 0 : ethnicGroup.hashCode());
+		result = prime * result + ((eyes == null) ? 0 : eyes.hashCode());
+		result = prime * result + ((futureChildren == null) ? 0 : futureChildren.hashCode());
+		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + Arrays.hashCode(image);
+		result = prime * result + ((imageContentType == null) ? 0 : imageContentType.hashCode());
+		result = prime * result + ((lookingFor == null) ? 0 : lookingFor.hashCode());
+		result = prime * result + ((pet == null) ? 0 : pet.hashCode());
+		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
+		result = prime * result + ((physical == null) ? 0 : physical.hashCode());
+		result = prime * result + ((purpose == null) ? 0 : purpose.hashCode());
+		result = prime * result + ((religion == null) ? 0 : religion.hashCode());
+		result = prime * result + ((sibblings == null) ? 0 : sibblings.hashCode());
+		result = prime * result + ((smoker == null) ? 0 : smoker.hashCode());
+		result = prime * result + ((studies == null) ? 0 : studies.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		return result;
+	}
 
-        ProfileDTO profileDTO = (ProfileDTO) o;
-        if (profileDTO.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), profileDTO.getId());
-    }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ProfileDTO other = (ProfileDTO) obj;
+		if (bio == null) {
+			if (other.bio != null)
+				return false;
+		} else if (!bio.equals(other.bio))
+			return false;
+		if (birthdate == null) {
+			if (other.birthdate != null)
+				return false;
+		} else if (!birthdate.equals(other.birthdate))
+			return false;
+		if (children != other.children)
+			return false;
+		if (civilStatus != other.civilStatus)
+			return false;
+		if (creationDate == null) {
+			if (other.creationDate != null)
+				return false;
+		} else if (!creationDate.equals(other.creationDate))
+			return false;
+		if (ethnicGroup != other.ethnicGroup)
+			return false;
+		if (eyes != other.eyes)
+			return false;
+		if (futureChildren != other.futureChildren)
+			return false;
+		if (gender != other.gender)
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (!Arrays.equals(image, other.image))
+			return false;
+		if (imageContentType == null) {
+			if (other.imageContentType != null)
+				return false;
+		} else if (!imageContentType.equals(other.imageContentType))
+			return false;
+		if (lookingFor != other.lookingFor)
+			return false;
+		if (pet == null) {
+			if (other.pet != null)
+				return false;
+		} else if (!pet.equals(other.pet))
+			return false;
+		if (phone == null) {
+			if (other.phone != null)
+				return false;
+		} else if (!phone.equals(other.phone))
+			return false;
+		if (physical != other.physical)
+			return false;
+		if (purpose != other.purpose)
+			return false;
+		if (religion != other.religion)
+			return false;
+		if (sibblings == null) {
+			if (other.sibblings != null)
+				return false;
+		} else if (!sibblings.equals(other.sibblings))
+			return false;
+		if (smoker != other.smoker)
+			return false;
+		if (studies != other.studies)
+			return false;
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
+			return false;
+		return true;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(getId());
-    }
+	@Override
+	public String toString() {
+		return "ProfileDTO [id=" + id + ", creationDate=" + creationDate + ", image=" + Arrays.toString(image)
+				+ ", imageContentType=" + imageContentType + ", gender=" + gender + ", phone=" + phone + ", bio=" + bio
+				+ ", birthdate=" + birthdate + ", civilStatus=" + civilStatus + ", lookingFor=" + lookingFor
+				+ ", purpose=" + purpose + ", physical=" + physical + ", religion=" + religion + ", ethnicGroup="
+				+ ethnicGroup + ", studies=" + studies + ", sibblings=" + sibblings + ", eyes=" + eyes + ", smoker="
+				+ smoker + ", children=" + children + ", futureChildren=" + futureChildren + ", pet=" + pet + ", user="
+				+ user + "]";
+	}
 
-    @Override
-    public String toString() {
-        return "ProfileDTO{" +
-            "id=" + getId() +
-            ", creationDate='" + getCreationDate() + "'" +
-            ", image='" + getImage() + "'" +
-            ", gender='" + getGender() + "'" +
-            ", phone='" + getPhone() + "'" +
-            ", bio='" + getBio() + "'" +
-            ", birthdate='" + getBirthdate() + "'" +
-            ", civilStatus='" + getCivilStatus() + "'" +
-            ", lookingFor='" + getLookingFor() + "'" +
-            ", purpose='" + getPurpose() + "'" +
-            ", physical='" + getPhysical() + "'" +
-            ", religion='" + getReligion() + "'" +
-            ", ethnicGroup='" + getEthnicGroup() + "'" +
-            ", studies='" + getStudies() + "'" +
-            ", sibblings=" + getSibblings() +
-            ", eyes='" + getEyes() + "'" +
-            ", smoker='" + getSmoker() + "'" +
-            ", children='" + getChildren() + "'" +
-            ", futureChildren='" + getFutureChildren() + "'" +
-            ", pet='" + isPet() + "'" +
-            ", user=" + getUserId() +
-            "}";
-    }
+//    public Long getUserId() {
+//        return userId;
+//    }
+//
+//    public void setUserId(Long userId) {
+//        this.userId = userId;
+//    }
+//
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) {
+//            return true;
+//        }
+//        if (o == null || getClass() != o.getClass()) {
+//            return false;
+//        }
+//
+//        ProfileDTO profileDTO = (ProfileDTO) o;
+//        if (profileDTO.getId() == null || getId() == null) {
+//            return false;
+//        }
+//        return Objects.equals(getId(), profileDTO.getId());
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hashCode(getId());
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "ProfileDTO{" +
+//            "id=" + getId() +
+//            ", creationDate='" + getCreationDate() + "'" +
+//            ", image='" + getImage() + "'" +
+//            ", gender='" + getGender() + "'" +
+//            ", phone='" + getPhone() + "'" +
+//            ", bio='" + getBio() + "'" +
+//            ", birthdate='" + getBirthdate() + "'" +
+//            ", civilStatus='" + getCivilStatus() + "'" +
+//            ", lookingFor='" + getLookingFor() + "'" +
+//            ", purpose='" + getPurpose() + "'" +
+//            ", physical='" + getPhysical() + "'" +
+//            ", religion='" + getReligion() + "'" +
+//            ", ethnicGroup='" + getEthnicGroup() + "'" +
+//            ", studies='" + getStudies() + "'" +
+//            ", sibblings=" + getSibblings() +
+//            ", eyes='" + getEyes() + "'" +
+//            ", smoker='" + getSmoker() + "'" +
+//            ", children='" + getChildren() + "'" +
+//            ", futureChildren='" + getFutureChildren() + "'" +
+//            ", pet='" + isPet() + "'" +
+//            ", user=" + getUserId() +
+//            "}";
+//    }
 }

@@ -5,7 +5,17 @@
 			<h3>Comments</h3>
 			<div *ngFor="let comment of post.comments">
 			    <p>comment.creationDate: {{comment.creationDate | date}}</p>      
-			    <p>comment.commentText: {{comment.commentText}}</p>    
+			    <p>comment.commentText: {{comment.commentText}}</p>
+			    <div *ngIf="comment.profile.image">
+                        <a (click)="openFile(comment.profile.imageContentType, comment.profile.image)">
+                            <img [src]="'data:' + comment.profile.imageContentType + ';base64,' + comment.profile.image" style="max-width: 100%;" alt="comment.profile image"/>
+                        </a>
+                        {{comment.profile.imageContentType}}, {{byteSize(comment.profile.image)}}
+                </div>  
+			    <p>comment.profile.user.id: {{comment.profile.user.id}}</p>
+				<p>comment.profile.user.firstName: {{comment.profile.user.firstName}}</p>
+				<p>comment.profile.user.lastName: {{comment.profile.user.lastName}}</p>
+				<p>... next comment</p>
 			</div>
 			
 			<h3>Tags</h3>
@@ -23,7 +33,7 @@
 			    <p>post.urllink.linkText: {{post.urllink.linkText}}</p>
 			    <p>post.urllink.linkURL: {{post.urllink.linkURL}}</p>
 			       
-			<h3>Profile</h3>
+			<h3>POST Profile</h3>
 			    <div *ngIf="post.profile.image">
                         <a (click)="openFile(post.profile.imageContentType, post.profile.image)">
                             <img [src]="'data:' + post.profile.imageContentType + ';base64,' + post.profile.image" style="max-width: 100%;" alt="post.profile image"/>
@@ -54,6 +64,8 @@
 			    <p>post.profile.user.lastName: {{post.profile.user.lastName}}</p>
 			    <p>post.profile.user.email: {{post.profile.user.email}}</p>
 			    <p>post.profile.user.activated: {{post.profile.user.activated}}</p>
+			    
+
    
     
     <!-- News Content -->
