@@ -3,6 +3,9 @@ package web.jhp6.web.service.dto;
 import java.time.Instant;
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Set;
+
+import web.jhp6.web.domain.Profile;
 
 /**
  * A DTO for the Follow entity.
@@ -19,7 +22,9 @@ public class FollowDTO implements Serializable {
 
     private Long followedId;
 
-    private Long followingId;
+//    private Long followingId;
+    
+    private Profile following;
 
     public Long getId() {
         return id;
@@ -61,44 +66,85 @@ public class FollowDTO implements Serializable {
         this.followedId = profileId;
     }
 
-    public Long getFollowingId() {
-        return followingId;
-    }
+	public Profile getFollowing() {
+		return following;
+	}
 
-    public void setFollowingId(Long profileId) {
-        this.followingId = profileId;
-    }
+	public void setFollowing(Profile following) {
+		this.following = following;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cfollowedId == null) ? 0 : cfollowedId.hashCode());
+		result = prime * result + ((cfollowingId == null) ? 0 : cfollowingId.hashCode());
+		result = prime * result + ((creationDate == null) ? 0 : creationDate.hashCode());
+		result = prime * result + ((followedId == null) ? 0 : followedId.hashCode());
+		result = prime * result + ((following == null) ? 0 : following.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
 
-        FollowDTO followDTO = (FollowDTO) o;
-        if (followDTO.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), followDTO.getId());
-    }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		FollowDTO other = (FollowDTO) obj;
+		if (cfollowedId == null) {
+			if (other.cfollowedId != null)
+				return false;
+		} else if (!cfollowedId.equals(other.cfollowedId))
+			return false;
+		if (cfollowingId == null) {
+			if (other.cfollowingId != null)
+				return false;
+		} else if (!cfollowingId.equals(other.cfollowingId))
+			return false;
+		if (creationDate == null) {
+			if (other.creationDate != null)
+				return false;
+		} else if (!creationDate.equals(other.creationDate))
+			return false;
+		if (followedId == null) {
+			if (other.followedId != null)
+				return false;
+		} else if (!followedId.equals(other.followedId))
+			return false;
+		if (following == null) {
+			if (other.following != null)
+				return false;
+		} else if (!following.equals(other.following))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(getId());
-    }
+	@Override
+	public String toString() {
+		return "FollowDTO [id=" + id + ", creationDate=" + creationDate + ", cfollowedId=" + cfollowedId
+				+ ", cfollowingId=" + cfollowingId + ", followedId=" + followedId + ", following=" + following + "]";
+	}
 
-    @Override
-    public String toString() {
-        return "FollowDTO{" +
-            "id=" + getId() +
-            ", creationDate='" + getCreationDate() + "'" +
-            ", cfollowed=" + getCfollowedId() +
-            ", cfollowing=" + getCfollowingId() +
-            ", followed=" + getFollowedId() +
-            ", following=" + getFollowingId() +
-            "}";
-    }
+	
+
+	
+//    public Long getFollowingId() {
+//        return followingId;
+//    }
+//
+//    public void setFollowingId(Long profileId) {
+//        this.followingId = profileId;
+//    }
+
+	
 }
