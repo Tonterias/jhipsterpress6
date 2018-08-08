@@ -17,13 +17,15 @@ public class FollowDTO implements Serializable {
 
     private Instant creationDate;
 
-    private Long cfollowedId;
+//    private Long cfollowedId;
 
-//    private Long cfollowingId;
+//    private Long cfollowingId; cfollowed
 
 //    private Long followedId;  
 
 //    private Long followingId;
+    
+    private Community cfollowed;
     
     private Community cfollowing;
     
@@ -47,13 +49,13 @@ public class FollowDTO implements Serializable {
         this.creationDate = creationDate;
     }
 
-    public Long getCfollowedId() {
-        return cfollowedId;
-    }
-
-    public void setCfollowedId(Long communityId) {
-        this.cfollowedId = communityId;
-    }
+//    public Long getCfollowedId() {
+//        return cfollowedId;
+//    }
+//
+//    public void setCfollowedId(Long communityId) {
+//        this.cfollowedId = communityId;
+//    }
 
 //    public Long getCfollowingId() {
 //        return cfollowingId;
@@ -87,11 +89,19 @@ public class FollowDTO implements Serializable {
 		this.cfollowing = cfollowing;
 	}
 
+	public Community getCfollowed() {
+		return cfollowed;
+	}
+
+	public void setCfollowed(Community cfollowed) {
+		this.cfollowed = cfollowed;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((cfollowedId == null) ? 0 : cfollowedId.hashCode());
+		result = prime * result + ((cfollowed == null) ? 0 : cfollowed.hashCode());
 		result = prime * result + ((cfollowing == null) ? 0 : cfollowing.hashCode());
 		result = prime * result + ((creationDate == null) ? 0 : creationDate.hashCode());
 		result = prime * result + ((followed == null) ? 0 : followed.hashCode());
@@ -109,10 +119,10 @@ public class FollowDTO implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		FollowDTO other = (FollowDTO) obj;
-		if (cfollowedId == null) {
-			if (other.cfollowedId != null)
+		if (cfollowed == null) {
+			if (other.cfollowed != null)
 				return false;
-		} else if (!cfollowedId.equals(other.cfollowedId))
+		} else if (!cfollowed.equals(other.cfollowed))
 			return false;
 		if (cfollowing == null) {
 			if (other.cfollowing != null)
@@ -144,10 +154,11 @@ public class FollowDTO implements Serializable {
 
 	@Override
 	public String toString() {
-		return "FollowDTO [id=" + id + ", creationDate=" + creationDate + ", cfollowedId=" + cfollowedId
-				+ ", cfollowing=" + cfollowing + ", followed=" + followed + ", following=" + following + "]";
+		return "FollowDTO [id=" + id + ", creationDate=" + creationDate + ", cfollowed=" + cfollowed + ", cfollowing="
+				+ cfollowing + ", followed=" + followed + ", following=" + following + "]";
 	}
 
+	
 	
 
 //    public Long getFollowingId() {
