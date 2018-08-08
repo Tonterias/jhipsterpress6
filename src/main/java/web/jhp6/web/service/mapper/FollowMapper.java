@@ -13,14 +13,15 @@ public interface FollowMapper extends EntityMapper<FollowDTO, Follow> {
 
     @Mapping(source = "cfollowed.id", target = "cfollowedId")
     @Mapping(source = "cfollowing.id", target = "cfollowingId")
-    @Mapping(source = "followed.id", target = "followedId")
+//    @Mapping(source = "followed.id", target = "followedId")
 //    @Mapping(source = "following.id", target = "followingId")
     FollowDTO toDto(Follow follow);
 
     @Mapping(source = "cfollowedId", target = "cfollowed")
     @Mapping(source = "cfollowingId", target = "cfollowing")
-    @Mapping(source = "followedId", target = "followed")
+//    @Mapping(source = "followedId", target = "followed")
 //    @Mapping(source = "followingId", target = "following")
+    @Mapping(target = "followed", ignore = true)
     @Mapping(target = "following", ignore = true)
     Follow toEntity(FollowDTO followDTO);
 
