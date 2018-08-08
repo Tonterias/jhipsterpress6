@@ -56,8 +56,8 @@
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="post.profileId">
-                        <a [routerLink]="['../profile', post.profileId , 'view' ]" >{{post.profileId}}</a>
+                    <div *ngIf="post.profile.id">
+                        <a [routerLink]="['../profile', post.profile.id , 'view' ]" >{{post.profile.id}}</a>
                     </div>
                 </td>
                 <td class="text-right">

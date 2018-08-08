@@ -35,8 +35,8 @@
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="comment.profileId">
-                        <a [routerLink]="['../profile', comment.profileId , 'view' ]" >{{comment.profileId}}</a>
+                    <div *ngIf="comment.profile.id">
+                        <a [routerLink]="['../profile', comment.profile.id , 'view' ]" >{{comment.profile.id}}</a>
                     </div>
                 </td>
                 <td class="text-right">
