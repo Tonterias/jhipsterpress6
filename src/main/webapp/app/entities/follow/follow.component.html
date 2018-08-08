@@ -28,23 +28,23 @@
                 <td><a [routerLink]="['/follow', follow.id, 'view' ]">{{follow.id}}</a></td>
                 <td>{{follow.creationDate | date:'medium'}}</td>
                 <td>
-                    <div *ngIf="follow.cfollowedId">
-                        <a [routerLink]="['../community', follow.cfollowedId , 'view' ]" >{{follow.cfollowedId}}</a>
+                    <div *ngIf="follow.cfollowed">
+                        <a [routerLink]="['../community', follow.cfollowed.id , 'view' ]" >{{follow.cfollowed.id}}</a>
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="follow.cfollowingId">
-                        <a [routerLink]="['../community', follow.cfollowingId , 'view' ]" >{{follow.cfollowingId}}</a>
+                    <div *ngIf="follow.cfollowing">
+                        <a [routerLink]="['../community', follow.cfollowing.id , 'view' ]" >{{follow.cfollowing.id}}</a>
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="follow.followedId">
-                        <a [routerLink]="['../profile', follow.followedId , 'view' ]" >{{follow.followedId}}</a>
+                    <div *ngIf="follow.followed">
+                        <a [routerLink]="['../profile', follow.followed.id , 'view' ]" >{{follow.followed.id}}</a>
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="follow.followingId">
-                        <a [routerLink]="['../profile', follow.followingId , 'view' ]" >{{follow.followingId}}</a>
+                    <div *ngIf="follow.following">
+                        <a [routerLink]="['../profile', follow.following.id , 'view' ]" >{{follow.following.id}}</a>
                     </div>
                 </td>
                 <td class="text-right">
