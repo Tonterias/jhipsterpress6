@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.Objects;
 import java.util.Set;
 
+import web.jhp6.web.domain.Community;
 import web.jhp6.web.domain.Profile;
 
 /**
@@ -18,11 +19,13 @@ public class FollowDTO implements Serializable {
 
     private Long cfollowedId;
 
-    private Long cfollowingId;
+//    private Long cfollowingId;
 
-//    private Long followedId;
+//    private Long followedId;  
 
 //    private Long followingId;
+    
+    private Community cfollowing;
     
     private Profile followed;
     
@@ -52,13 +55,13 @@ public class FollowDTO implements Serializable {
         this.cfollowedId = communityId;
     }
 
-    public Long getCfollowingId() {
-        return cfollowingId;
-    }
-
-    public void setCfollowingId(Long communityId) {
-        this.cfollowingId = communityId;
-    }
+//    public Long getCfollowingId() {
+//        return cfollowingId;
+//    }
+//
+//    public void setCfollowingId(Long communityId) {
+//        this.cfollowingId = communityId;
+//    }
 
 	public Profile getFollowing() {
 		return following;
@@ -76,12 +79,20 @@ public class FollowDTO implements Serializable {
 		this.followed = followed;
 	}
 
+	public Community getCfollowing() {
+		return cfollowing;
+	}
+
+	public void setCfollowing(Community cfollowing) {
+		this.cfollowing = cfollowing;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((cfollowedId == null) ? 0 : cfollowedId.hashCode());
-		result = prime * result + ((cfollowingId == null) ? 0 : cfollowingId.hashCode());
+		result = prime * result + ((cfollowing == null) ? 0 : cfollowing.hashCode());
 		result = prime * result + ((creationDate == null) ? 0 : creationDate.hashCode());
 		result = prime * result + ((followed == null) ? 0 : followed.hashCode());
 		result = prime * result + ((following == null) ? 0 : following.hashCode());
@@ -103,10 +114,10 @@ public class FollowDTO implements Serializable {
 				return false;
 		} else if (!cfollowedId.equals(other.cfollowedId))
 			return false;
-		if (cfollowingId == null) {
-			if (other.cfollowingId != null)
+		if (cfollowing == null) {
+			if (other.cfollowing != null)
 				return false;
-		} else if (!cfollowingId.equals(other.cfollowingId))
+		} else if (!cfollowing.equals(other.cfollowing))
 			return false;
 		if (creationDate == null) {
 			if (other.creationDate != null)
@@ -134,8 +145,10 @@ public class FollowDTO implements Serializable {
 	@Override
 	public String toString() {
 		return "FollowDTO [id=" + id + ", creationDate=" + creationDate + ", cfollowedId=" + cfollowedId
-				+ ", cfollowingId=" + cfollowingId + ", followed=" + followed + ", following=" + following + "]";
+				+ ", cfollowing=" + cfollowing + ", followed=" + followed + ", following=" + following + "]";
 	}
+
+	
 
 //    public Long getFollowingId() {
 //        return followingId;
