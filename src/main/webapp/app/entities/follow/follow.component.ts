@@ -53,7 +53,8 @@ export class FollowComponent implements OnInit, OnDestroy {
             .query({
                 page: this.page - 1,
                 size: this.itemsPerPage,
-                sort: this.sort()
+                sort: this.sort(),
+                'followedId.equals': 1
             })
             .subscribe(
                 (res: HttpResponse<IFollow[]>) => this.paginateFollows(res.body, res.headers),

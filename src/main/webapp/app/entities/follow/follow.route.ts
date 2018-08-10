@@ -40,6 +40,19 @@ export const followRoute: Routes = [
         canActivate: [UserRouteAccessService]
     },
     {
+        path: 'follow?followedId.equals=:id',
+        component: FollowComponent,
+        resolve: {
+            pagingParams: JhiResolvePagingParams
+        },
+        data: {
+            authorities: ['ROLE_USER'],
+            defaultSort: 'id,asc',
+            pageTitle: 'jhipsterPress06App.follow.home.title'
+        },
+        canActivate: [UserRouteAccessService]
+    },
+    {
         path: 'follow/:id/view',
         component: FollowDetailComponent,
         resolve: {
