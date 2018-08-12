@@ -29,6 +29,7 @@ export class MessageComponent implements OnInit, OnDestroy {
     predicate: any;
     previousPage: any;
     reverse: any;
+    paramMessageProfileId: any;
 
     constructor(
         private messageService: MessageService,
@@ -46,6 +47,9 @@ export class MessageComponent implements OnInit, OnDestroy {
             this.reverse = data.pagingParams.ascending;
             this.predicate = data.pagingParams.predicate;
         });
+        this.activatedRoute.queryParams.subscribe( params => {
+            this.paramMessageProfileId = params.profileIdEquals;
+        });
     }
 
     loadAll() {
@@ -53,7 +57,8 @@ export class MessageComponent implements OnInit, OnDestroy {
             .query({
                 page: this.page - 1,
                 size: this.itemsPerPage,
-                sort: this.sort()
+                sort: this.sort(),
+                'profileId.equals': this.paramMessageProfileId
             })
             .subscribe(
                 (res: HttpResponse<IMessage[]>) => this.paginateMessages(res.body, res.headers),

@@ -29,6 +29,7 @@ export class NotificationComponent implements OnInit, OnDestroy {
     predicate: any;
     previousPage: any;
     reverse: any;
+    paramNotificationUserId: any;
 
     constructor(
         private notificationService: NotificationService,
@@ -46,6 +47,9 @@ export class NotificationComponent implements OnInit, OnDestroy {
             this.reverse = data.pagingParams.ascending;
             this.predicate = data.pagingParams.predicate;
         });
+        this.activatedRoute.queryParams.subscribe( params => {
+            this.paramNotificationUserId = params.userIdEquals;
+        });
     }
 
     loadAll() {
@@ -53,7 +57,8 @@ export class NotificationComponent implements OnInit, OnDestroy {
             .query({
                 page: this.page - 1,
                 size: this.itemsPerPage,
-                sort: this.sort()
+                sort: this.sort(),
+                'userId.equals': this.paramNotificationUserId
             })
             .subscribe(
                 (res: HttpResponse<INotification[]>) => this.paginateNotifications(res.body, res.headers),
@@ -73,7 +78,8 @@ export class NotificationComponent implements OnInit, OnDestroy {
             queryParams: {
                 page: this.page,
                 size: this.itemsPerPage,
-                sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
+                sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc'),
+                'profileId.equals': this.param
             }
         });
         this.loadAll();

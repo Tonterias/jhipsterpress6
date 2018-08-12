@@ -40,6 +40,19 @@ export const notificationRoute: Routes = [
         canActivate: [UserRouteAccessService]
     },
     {
+        path: 'notification?userId.equals=:id',
+        component: NotificationComponent,
+        resolve: {
+            pagingParams: JhiResolvePagingParams
+        },
+        data: {
+            authorities: ['ROLE_USER'],
+            defaultSort: 'id,asc',
+            pageTitle: 'jhipsterPress06App.notification.home.title'
+        },
+        canActivate: [UserRouteAccessService]
+    },
+    {
         path: 'notification/:id/view',
         component: NotificationDetailComponent,
         resolve: {
