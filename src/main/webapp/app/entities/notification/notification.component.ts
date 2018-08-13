@@ -53,13 +53,16 @@ export class NotificationComponent implements OnInit, OnDestroy {
     }
 
     loadAll() {
-        this.notificationService
-            .query({
+        const query = {
                 page: this.page - 1,
                 size: this.itemsPerPage,
-                sort: this.sort(),
-                'userId.equals': this.paramNotificationUserId
-            })
+                sort: this.sort()
+            };
+        if ( this.paramNotificationUserId  != null) {
+            query['userId.equals'] = this.paramNotificationUserId;
+        }
+        this.notificationService
+            .query(query)
             .subscribe(
                 (res: HttpResponse<INotification[]>) => this.paginateNotifications(res.body, res.headers),
                 (res: HttpErrorResponse) => this.onError(res.message)
@@ -78,8 +81,7 @@ export class NotificationComponent implements OnInit, OnDestroy {
             queryParams: {
                 page: this.page,
                 size: this.itemsPerPage,
-                sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc'),
-                'profileId.equals': this.param
+                sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
             }
         });
         this.loadAll();

@@ -248,8 +248,13 @@ relationship OneToMany {
     Community{cfollowing(id)} to Follow{cfollowing(id)}
     Profile{followed(id)} to Follow{followed(id)}
     Profile{following(id)} to Follow{following(id)}
-    Community{blockinguser(id)} to Blockeduser{blockinguser(id)}
+    
     Community{blockeduser(id)} to Blockeduser{blockeduser(id)}
+    Community{blockinguser(id)} to Blockeduser{blockinguser(id)}
+    Profile{blockeduser(id)} to Blockeduser{blockeduser(id)}    
+    Profile{blockinguser(id)} to Blockeduser{blockinguser(id)}
+
+    
     Album{photo} to Photo{album}
     Calbum{photo} to Photo{calbum}
 }

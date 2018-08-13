@@ -53,18 +53,35 @@ export class MessageComponent implements OnInit, OnDestroy {
     }
 
     loadAll() {
-        this.messageService
-            .query({
+        const query = {
                 page: this.page - 1,
                 size: this.itemsPerPage,
-                sort: this.sort(),
-                'profileId.equals': this.paramMessageProfileId
-            })
+                sort: this.sort()
+            };
+        if ( this.paramMessageProfileId  != null) {
+            query['profileId.equals'] = this.paramMessageProfileId;
+        }
+        this.messageService
+            .query(query)
             .subscribe(
                 (res: HttpResponse<IMessage[]>) => this.paginateMessages(res.body, res.headers),
                 (res: HttpErrorResponse) => this.onError(res.message)
             );
     }
+
+//    loadAll() {
+//        this.messageService
+//            .query({
+//                page: this.page - 1,
+//                size: this.itemsPerPage,
+//                sort: this.sort(),
+//                'profileId.equals': this.paramMessageProfileId
+//            })
+//            .subscribe(
+//                (res: HttpResponse<IMessage[]>) => this.paginateMessages(res.body, res.headers),
+//                (res: HttpErrorResponse) => this.onError(res.message)
+//            );
+//    }
 
     loadPage(page: number) {
         if (page !== this.previousPage) {

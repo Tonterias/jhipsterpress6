@@ -4,6 +4,7 @@ import web.jhp6.web.domain.Authority;
 import web.jhp6.web.domain.User;
 import web.jhp6.web.service.dto.UserDTO;
 
+import org.mapstruct.Mapper;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -16,6 +17,7 @@ import java.util.stream.Collectors;
  * support is still in beta, and requires a manual step with an IDE.
  */
 @Service
+//@Mapper(componentModel = "spring", uses = {ProfileMapper.class, CommunityMapper.class})
 public class UserMapper {
 
     public UserDTO userToUserDTO(User user) {
